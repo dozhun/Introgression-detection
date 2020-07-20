@@ -42,7 +42,7 @@ with open(callablefile) as data:
 genome_mean = sum(snps_counts_window.values())/(total_called/window_size)
 
 
-print sum(snps_counts_window.values()), genome_mean, total_called
+print(sum(snps_counts_window.values()), genome_mean, total_called)
 
 with open(callablefile) as data, open(outfile,'w') as out:
 	for line in data:

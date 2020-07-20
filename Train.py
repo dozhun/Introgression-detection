@@ -22,7 +22,7 @@ with open(outprefix + '.log','w') as out:
         starting_probabilities = np.log(starting_probabilities)
         starting_probabilities, transitions, emissions, new_prob = TrainBaumWelsch(starting_probabilities, transitions, emissions, weights, obs, mutrates)
         
-        print 'doing iteration {0} with old prob {1} and new prob {2}'.format(i, old_prob, new_prob)
+        print('doing iteration {0} with old prob {1} and new prob {2}'.format(i, old_prob, new_prob))
 
 
         # Report emission values, transition values and likelihood of sequence

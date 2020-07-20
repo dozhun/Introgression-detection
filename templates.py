@@ -139,7 +139,7 @@ def Checkobsfile(obs, weights, mutrates):
 	for index, (observation, w, m) in enumerate(zip(obs, weights, mutrates)):
 
 		if w*m == 0 and observation != 0:
-			print('warning in line {}. found {} SNPs but bin has {} mutation rate and {} called bases'.format(index,observation, m, w))
+			print(('warning in line {}. found {} SNPs but bin has {} mutation rate and {} called bases'.format(index,observation, m, w)))
 			returnobs.append(0)
 		else:
 			returnobs.append(observation)
@@ -212,7 +212,7 @@ def Forward_backward(init_start, transitions, emissions, weights, observations, 
         fractorials[i] = np.log(math.factorial(obs))
 
     number_observations = len(observations)
-    state_nums = range(len(init_start))
+    state_nums = list(range(len(init_start)))
 
     probabilities = np.zeros( (len(state_nums), number_observations) ) 
     for state in state_nums: 
@@ -254,7 +254,7 @@ def TrainBaumWelsch(init_start, transitions, emissions, weights, observations, m
         fractorials[i] = np.log(math.factorial(obs))
 
     number_observations = len(observations)
-    state_nums = range(len(init_start))
+    state_nums = list(range(len(init_start)))
 
     probabilities = np.zeros( (len(state_nums), number_observations) ) 
     for state in state_nums: 
@@ -333,7 +333,7 @@ def TrainModel(infile, outprefix, model, weights_file, mutfile):
             starting_probabilities = np.log(starting_probabilities)
             starting_probabilities, transitions, emissions, new_prob = TrainBaumWelsch(starting_probabilities, transitions, emissions, weights, obs, mutrates)
             
-            print 'doing iteration {0} with old prob {1} and new prob {2}'.format(i, old_prob, new_prob)
+            print('doing iteration {0} with old prob {1} and new prob {2}'.format(i, old_prob, new_prob))
 
 
             # Report emission values, transition values and likelihood of sequence
